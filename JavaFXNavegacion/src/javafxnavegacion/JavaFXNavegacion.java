@@ -22,7 +22,6 @@ public class JavaFXNavegacion extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLNavegacion.fxml"));
         
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }

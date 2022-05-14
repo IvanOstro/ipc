@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxnavegacion.FXMLVistaAppController">
    <items>
       <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="200.0">
          <children>
@@ -25,7 +25,7 @@
                </font>
             </Label>
             <Region prefHeight="60.0" prefWidth="244.0" />
-            <Button fx:id="menu_work" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" styleClass="active_menu" text="Realizar problemas">
+            <Button fx:id="menu_work" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#menuNavigationProblemas" text="Realizar problemas">
                <graphic>
                   <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <viewport>
@@ -41,7 +41,7 @@
                </font>
             </Button>
             <Region prefHeight="80.0" prefWidth="244.0" />
-            <Button fx:id="menu_results" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="active_menu" text="Mostrar resultados">
+            <Button fx:id="menu_results" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menuNavigationResultados" text="Mostrar resultados">
                <graphic>
                   <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <viewport>
@@ -57,7 +57,7 @@
                </font>
             </Button>
             <Region prefHeight="600.0" prefWidth="200.0" />
-            <Button fx:id="menu_settings" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" text="Ajustes">
+            <Button fx:id="menu_settings" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#menuNavigationAjustes" text="Ajustes">
                <graphic>
                   <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <viewport>
@@ -73,7 +73,7 @@
                </font>
             </Button>
             <Region prefHeight="60.0" prefWidth="200.0" />
-            <Button fx:id="menu_sign_out" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" text="Cerrar sesión">
+            <Button fx:id="menu_sign_out" graphicTextGap="16.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#menuNavigationCerrarSesion" text="Cerrar sesión">
                <graphic>
                   <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <viewport>
@@ -96,6 +96,7 @@
       <GridPane>
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" valignment="CENTER" vgrow="ALWAYS" />

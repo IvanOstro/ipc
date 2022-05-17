@@ -5,9 +5,12 @@
  */
 package javafxnavegacion;
 
+import DBAccess.NavegacionDAOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Navegacion;
+import model.User;
 
 /**
  * FXML Controller class
@@ -50,11 +55,17 @@ public class FXMLIniciarSesionController implements Initializable {
     @FXML
     private Text textousuario;
 
-    /**
-     * Initializes the controller class.
-     */
+    public Navegacion navegacion;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    
+          try {
+            navegacion = Navegacion.getSingletonNavegacion();
+        } catch (NavegacionDAOException ex) {
+            Logger.getLogger(FXMLIniciarSesionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
        botoniniciar.disableProperty().bind(Bindings.or(
                 Bindings.equal(fielduser.textProperty(), ""),
                 Bindings.equal(fieldpassword.textProperty(), "")));
@@ -100,6 +111,8 @@ public class FXMLIniciarSesionController implements Initializable {
         String usuario = fielduser.getText();
         String pw = fieldpassword.getText();
         
+        
+        User u=navegacion.loginUser(usuario, pw);
        
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMenuPrincipal.fxml"));
             Parent root = loader.load();
@@ -117,7 +130,7 @@ public class FXMLIniciarSesionController implements Initializable {
         
             Stage mystage = (Stage) botonrecordar.getScene().getWindow();
             mystage.close();
-      
+//      
        
     }
 

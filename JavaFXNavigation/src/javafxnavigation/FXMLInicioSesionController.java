@@ -5,7 +5,7 @@
  */
 package javafxnavigation;
 
-import DBAccess.*;
+import DBAccess.NavegacionDAOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,10 +26,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.*;
 
+
 /**
  * FXML Controller class
  *
- * @author vsanz
+ * @author ivanostr.
  */
 public class FXMLInicioSesionController implements Initializable {
 
@@ -54,17 +55,18 @@ public class FXMLInicioSesionController implements Initializable {
     @FXML
     private Text textousuario;
 
-//    public Navegacion navegacion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     
-//          try {
-//            navegacion = Navegacion.getSingletonNavegacion();
-//        } catch (Exception ex) {
-//            Logger.getLogger(FXMLInicioSesionController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
+       
+        try {
+            Navegacion navegacion = Navegacion.getSingletonNavegacion();
+            System.out.print(navegacion);
+            
+        } catch (NavegacionDAOException ex) {
+            Logger.getLogger(FXMLInicioSesionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        botoniniciar.disableProperty().bind(Bindings.or(
                 Bindings.equal(fielduser.textProperty(), ""),
                 Bindings.equal(fieldpassword.textProperty(), "")));
